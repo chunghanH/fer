@@ -1,10 +1,15 @@
 class ListsController < ApplicationController
 	def index
-	  currency = "USD"
-	  url_current = "http://rate.bot.com.tw/xrt?Lang=zh-TW"
-	  url_histroy = "http://rate.bot.com.tw/xrt/quote/l6m/#{currency}"
-	  lists = DashBoard.new(url_current, url_histroy, currency)
-	  @lists = lists.analysis
+	  # currency = "USD"
+	  currencies = ["USD", "EUR", "AUD"]
+	  @lists = []
+	  currencies.each do |currency|
+		  url_current = "http://rate.bot.com.tw/xrt?Lang=zh-TW"
+		  url_histroy = "http://rate.bot.com.tw/xrt/quote/l6m/#{currency}"
+		  lists = DashBoard.new(url_current, url_histroy, currency)
+		  @lists << lists.analysis
+	  end
+	  @lists
 	end
 end
 
@@ -17,10 +22,10 @@ class DashBoard
   end
 
   def analysis
-    lists=[]
+    lists={}
     current_data.each do |cp|
       if cp[:currency] =~ /#{@currency}/
-	    lists << {
+	    lists = {
 	      currency: @currency,
 	      min_date: history_data[:min_date],
 	      min_sold: history_data[:min_sold],
