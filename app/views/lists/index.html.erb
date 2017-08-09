@@ -1,0 +1,18 @@
+<h1>Index</h1>
+<table border="1">
+<thead>
+<tr>
+<td>title</td>
+<td>we buy</td>
+<td>we sell</td>
+</tr>
+</thead>
+<tbody>
+<% @str.each do |list| %>
+<tr>
+<td><%= list[:title] %></li>
+<td><%= list[:we_buy] %></li>
+<td><%= list[:we_sell] %></li>
+</tr>
+<% end %>
+<tbody>
