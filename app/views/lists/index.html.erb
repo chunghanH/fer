@@ -1,26 +1,27 @@
 <h1>Index</h1>
 <table border="1">
-<thead>
-<tr>
-<td>Currency</td>
-<td>Min_Date</td>
-<td>Min_Sell</td>
-<td>Max_Date</td>
-<td>Max_buy</td>
-<td>We_Sell</td>
-<td>We_Buy</td>
-</tr>
-</thead>
-<tbody>
-<% @lists.each do |list| %>
-<tr>
-<td><%= list[:currency] %></td>
-<td><%= list[:min_date] %></td>
-<td><%= list[:min_sell] %></td>
-<td><%= list[:max_date] %></td>
-<td><%= list[:max_buy] %></td>
-<td><%= list[:we_sell] %></td>
-<td><%= list[:we_buy] %></td>
-</tr>
-<% end %>
-<tbody>
+	<thead>
+	<tr>
+		<td>Currency</td>
+		<td>Min_Date</td>
+		<td>Min_Sold</td>
+		<td>Max_Date</td>
+		<td>Max_Bought</td>
+		<td>Buy</td>
+		<td>Sell</td>
+	</tr>
+	</thead>
+	<tbody>
+	<% @lists.each do |list| %>
+		<tr>
+			<td><%= list[:currency] %></td>
+			<td><%= list[:min_date] %></td>
+			<td><%= list[:min_sold] %></td>
+			<td><%= list[:max_date] %></td>
+			<td><%= list[:max_bought] %></td>
+			<td><%= list[:we_buy] %></td>
+			<td><%= list[:we_sell] %></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>
