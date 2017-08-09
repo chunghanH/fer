@@ -2,7 +2,7 @@ class ListsController < ApplicationController
 	def index
 	  currency = "USD"
 	  url_current = "http://rate.bot.com.tw/xrt?Lang=zh-TW"
-	  url_histroy = "http://rate.bot.com.tw/xrt/quote/l6m/#{@currency}"
+	  url_histroy = "http://rate.bot.com.tw/xrt/quote/l6m/#{currency}"
 	  lists = DashBoard.new(url_current, url_histroy, currency)
 	  @lists = lists.analysis
 	end
@@ -26,6 +26,9 @@ class DashBoard
 	      min_sold: history_data[:min_sold],
 	      max_date: history_data[:max_date],
 	      max_bought: history_data[:max_bought],
+	      change: count_change(history_data[:max_bought], history_data[:min_sold]),
+	      section: get_section(history_data[:max_bought], history_data[:min_sold], 2),
+	      result: count_change(history_data[:max_bought], cp[:we_sell]),
 	      we_buy: cp[:we_buy],
 	      we_sell: cp[:we_sell],
 	    }
@@ -54,17 +57,12 @@ class DashBoard
   	max_date = ''
   	min_date = ''
   	doc = Nokogiri::HTML(open(@url_histroy))
-  	puts @url_histroy
 	doc.css("table tbody tr").each do |row|
 	  datas = row.css("td")
 
 	    date = datas[0] && replace_value(datas[0].text)
-	   #  we_bought = datas[4] && replace_value(datas[4].text)
-	  	# we_sold = datas[5] && replace_value(datas[5].text)
 	  	we_bought = datas[4] && (datas[4].text)
 	  	we_sold = datas[5] && (datas[5].text)
-	  	puts "#{we_bought}"
-	  	# puts "#{we_sold}"
 
 	  	if we_bought.to_f > max_bought.to_f
 	      max_bought = we_bought
@@ -83,15 +81,7 @@ class DashBoard
     	max_date: max_date, 
     	min_date: min_date,
     }
-    	  	  
-
   end
-
-  def crawler
-
-  end 
-
-
 end
 
 
@@ -103,5 +93,15 @@ module NiceTool
 
   def replacement
   	replacement = [[/\r/, ''], [/\n/, '']]
+  end
+
+  def count_change(max, min)
+  	result = (min.to_f / max.to_f - 1) * 100.0
+  	result.round(3)
+  end
+
+  def get_section(max_bought, min_sold, num)
+  	section = count_change(max_bought, min_sold)
+  	section = section.to_f / num
   end
 end
