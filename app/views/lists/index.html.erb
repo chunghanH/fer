@@ -2,17 +2,25 @@
 <table border="1">
 <thead>
 <tr>
-<td>title</td>
-<td>we buy</td>
-<td>we sell</td>
+<td>Currency</td>
+<td>Min_Date</td>
+<td>Min_Sell</td>
+<td>Max_Date</td>
+<td>Max_buy</td>
+<td>We_Sell</td>
+<td>We_Buy</td>
 </tr>
 </thead>
 <tbody>
-<% @str.each do |list| %>
+<% @lists.each do |list| %>
 <tr>
-<td><%= list[:title] %></li>
-<td><%= list[:we_buy] %></li>
-<td><%= list[:we_sell] %></li>
+<td><%= list[:currency] %></td>
+<td><%= list[:min_date] %></td>
+<td><%= list[:min_sell] %></td>
+<td><%= list[:max_date] %></td>
+<td><%= list[:max_buy] %></td>
+<td><%= list[:we_sell] %></td>
+<td><%= list[:we_buy] %></td>
 </tr>
 <% end %>
 <tbody>
