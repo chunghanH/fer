@@ -11,10 +11,14 @@ class ListsController < ApplicationController
 	  end
 	  @lists
 	end
+
+	def about
+		@str = 'hello i am tom'
+	end
 end
 
 class DashBoard
-  def initialize(url_current, url_histroy, currency)
+  def initialize(url_current, url_histroy, currency) 	
   	extend NiceTool
   	@url_current = url_current
   	@url_histroy = url_histroy
@@ -23,8 +27,9 @@ class DashBoard
 
   def analysis
     lists={}
-    current_data.each do |cp|
-      if cp[:currency] =~ /#{@currency}/
+    current_data.each do |data|
+      if data[:currency] =~ /#{@currency}/
+
 	    lists = {
 	      currency: @currency,
 	      min_date: history_data[:min_date],
@@ -33,9 +38,9 @@ class DashBoard
 	      max_bought: history_data[:max_bought],
 	      change: count_change(history_data[:max_bought], history_data[:min_sold]),
 	      section: get_section(history_data[:max_bought], history_data[:min_sold], 2),
-	      result: count_change(history_data[:max_bought], cp[:we_sell]),
-	      we_buy: cp[:we_buy],
-	      we_sell: cp[:we_sell],
+	      result: count_change(history_data[:max_bought], data[:we_sell]),
+	      we_buy: data[:we_buy],
+	      we_sell: data[:we_sell],
 	    }
       end
     end
