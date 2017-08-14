@@ -34,16 +34,16 @@
 	</tbody>
 </table>
 
-Current_types:<%=  @currencies.length %>
+<h3>Current_types:<%=  @currencies.length %></h3>
 <ul>
 	<% @currencies.each do |currency| %>
-			<li><%= currency.name %></li>
-			<li><%= link_to 'delete', currency_path(currency), method: :delete, data: { confirm:'Are you sure?'} %></li>
+			<li><%= currency.name %>
+			<%= link_to 'delete', currency_path(currency), method: :delete, data: { confirm:'Are you sure?'} %></li>
 	<% end %>
 </ul>
 
 <%= form_for @currency do |f| %>
-	<%= f.label :name %>
+	<%= f.label :name, 'Currency' %>
 	<%= f.text_field :name %>
 	<%= f.submit 'Add' %>
 <% end %>

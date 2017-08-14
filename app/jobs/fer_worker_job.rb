@@ -2,14 +2,11 @@ class FerWorkerJob < ApplicationJob
   queue_as :default
 
   def perform(*args)
-    puts "***** FerWorkerJob worker generates stuff *****"
     currencies = Currency.all
-	currencies.each do |currency|
+	  currencies.each do |currency|
 	  url_current = "http://rate.bot.com.tw/xrt?Lang=zh-TW"
 	  url_histroy = "http://rate.bot.com.tw/xrt/quote/l6m/#{currency.name}"
 	  lists = FerCrawler.new(url_current, url_histroy, currency.name)
-	   puts "*******************#{currency.name}******************************"
-
 	  lists.current_data
 	  lists.history_data
 	end

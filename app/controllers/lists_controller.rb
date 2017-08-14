@@ -3,6 +3,7 @@ class ListsController < ApplicationController
 	  # FerWorkerJob.set( wait: 1.minutes ).perform_later
 	  FerWorkerJob.perform_later
 	  @currencies = Currency.all
+	  @currency = Currency.new
 	end
 
 	def about

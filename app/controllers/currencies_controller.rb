@@ -1,14 +1,11 @@
 class CurrenciesController < ApplicationController
-  def index
-  	@currencies = Currency.all
-  	@currency = Currency.new
-  end
+
   def create
   	@currency = Currency.create(currency_params)
   	if @currency.save
-  	  redirect_to currencies_path
+  	  redirect_to lists_path
   	else
-  	  render :index
+  	  render '/lists'
   	end 
   end
 
