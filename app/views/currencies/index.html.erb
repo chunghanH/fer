@@ -1,0 +1,40 @@
+<h1>Currencies</h1>
+
+Current_type:<%=  @currencies.length %>
+<table class="table table-bordered">
+	<thead>
+		<tr>		
+			<td>Name</td>
+			<td>Date</td>
+			<td>History_bought</td>
+			<td>History_sold</td>
+			<td>Date</td>
+			<td>Current_bought</td>
+			<td>Current_sell</td>
+			<td>Updated at</td>
+			<td></td>
+
+		<tr>
+	</thead>
+	<tbody>
+	<% @currencies.each do |currency| %>
+		<tr>
+			<td><%= currency.name %></td>
+			<td><%= currency.min_date %></td>
+			<td><%= currency.history_bought %></td>
+			<td><%= currency.max_date %></td>
+			<td><%= currency.history_sold %></td>
+			<td><%= currency.current_buy %></td>
+			<td><%= currency.current_sell %></td>
+			<td><%= currency.updated_at %></td>
+			<td><%= link_to 'delete', currency_path(currency), method: :delete, data: { confirm:'Are you sure?'} %></td>
+		<tr>
+	<% end %>
+	<tbody>
+</table>
+
+<%= form_for @currency do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	<%= f.submit 'create' %>
+<% end %>

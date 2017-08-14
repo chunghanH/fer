@@ -15,18 +15,18 @@
 	</tr>
 	</thead>
 	<tbody>
-	<% @lists.each do |list| %>
+	<% @currencies.each do |currency| %>
 		<tr>
-			<td><%= list[:currency] %></td>
-			<td><%= list[:min_date] %></td>
-			<td><%= list[:min_sold] %></td>
-			<td><%= list[:max_date] %></td>
-			<td><%= list[:max_bought] %></td>
-			<td><%= list[:change] %>%</td>
-			<td><%= list[:section] %>%</td>
-			<td><%= list[:result] %>%</td>
-			<td><%= list[:we_buy] %></td>
-			<td><%= list[:we_sell] %></td>
+			<td><%= currency.name %></td>
+			<td><%= currency.min_date %></td>
+			<td><%= currency.history_sold %></td>
+			<td><%= currency.max_date %></td>
+			<td><%= currency.history_bought %></td>
+			<td><%= count_change(currency.history_bought, currency.history_sold) %>%</td>
+			<td><%= get_section(currency.history_bought, currency.history_sold, 2) %>%</td>
+			<td><%= count_change(currency.history_bought, currency.current_sell) %>%</td>
+			<td><%= currency.current_buy %></td>
+			<td><%= currency.current_sell %></td>
 		</tr>
 	<% end %>
 	</tbody>
