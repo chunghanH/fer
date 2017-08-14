@@ -12,7 +12,7 @@ class CurrenciesController < ApplicationController
   def destroy
   	@currency = Currency.find(params[:id])
   	@currency.destroy
-  	redirect_to currencies_path
+  	redirect_to lists_path
   end
 
   private 

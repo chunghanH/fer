@@ -38,7 +38,7 @@
 <ul>
 	<% @currencies.each do |currency| %>
 			<li><%= currency.name %>
-			<%= link_to 'delete', currency_path(currency), method: :delete, data: { confirm:'Are you sure?'} %></li>
+			<%= link_to 'delete', currency_path(currency), method: :delete %></li>
 	<% end %>
 </ul>
 
