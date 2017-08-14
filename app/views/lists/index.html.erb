@@ -1,4 +1,6 @@
 <h1>外匯小幫手</h1>
+<%= link_to 'about', about_path %>
+
 <table class="table table-bordered">
 	<thead>
 	<tr>
@@ -31,4 +33,17 @@
 	<% end %>
 	</tbody>
 </table>
-<%= link_to 'about', about_path %>
+
+Current_types:<%=  @currencies.length %>
+<ul>
+	<% @currencies.each do |currency| %>
+			<li><%= currency.name %></li>
+			<li><%= link_to 'delete', currency_path(currency), method: :delete, data: { confirm:'Are you sure?'} %></li>
+	<% end %>
+</ul>
+
+<%= form_for @currency do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	<%= f.submit 'Add' %>
+<% end %>
