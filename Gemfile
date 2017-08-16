@@ -10,7 +10,7 @@ gem 'capistrano-passenger', '~> 0.2.0'
 gem 'capistrano-rbenv', '~> 2.1'
 gem 'sidekiq'
 gem 'sinatra'
-
+gem 'sqlite3'
 gem 'bootstrap-sass'
 gem 'nokogiri'
 gem 'pry'
@@ -56,7 +56,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
