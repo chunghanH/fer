@@ -1,13 +1,14 @@
 <style>
-	table { 
+	.table-bordered { 
+		overflow: auto;
 		display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
+	}
 </style>
+<div class="row">
+<div class="col-sm-8">
 <table class="table table-bordered" >
 	<thead>
-	<tr>
+	<tr class="info">
 		<td>幣種</td>
 		<td>歷史最低賣出日</td>
 		<td>歷史最低賣出</td>
@@ -38,19 +39,26 @@
 	</tbody>
 </table>
 
-<h3>Current_types:<%=  @currencies.length %></h3>
-<ol>
+<h3>Current_Types:<%=  @currencies.length %></h3>
+<table class="table table-hover" >
 	<% @currencies.each do |currency| %>
-			<li>
+		<tr>
+			<td>
 				<%= currency.name %>
-			    <%= link_to 'delete', currency_path(currency), method: :delete, class: 'btn btn-default btn-xs' %>
-		    </li>
+		    </td>
+		    <td>
+		    	<%= link_to 'delete', currency_path(currency), method: :delete, class: 'btn btn-default btn-sm' %>
+		    </td>
+		</tr>
 	<% end %>
-</ol>
-
+</table>
 
 <%= form_for @currency do |f| %>
 	<%= f.label :name, 'Currency' %>
 	<%= f.select :name, @selection %>
 	<%= f.submit 'Add', class:'btn btn-primary' %>
 <% end %>
+</div>
+</div>
+<div class="col-sm-4">
+</div>
