@@ -7,7 +7,7 @@
 		<td>歷史最高買入日</td>
 		<td>歷史最高買入</td>
 		<td>漲跌幅</td>
-		<td>區段</td>
+		<td>1/2</td>
 		<td>結果</td>
 		<td>即期買入</td>
 		<td>即期賣出</td>
@@ -41,8 +41,9 @@
 	<% end %>
 </ol>
 
+
 <%= form_for @currency do |f| %>
 	<%= f.label :name, 'Currency' %>
-	<%= f.text_field :name %>
+	<%= f.select :name, @selection %>
 	<%= f.submit 'Add', class:'btn btn-primary' %>
 <% end %>
