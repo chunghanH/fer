@@ -1,4 +1,5 @@
 # server-based syntax
+set :production
 server '139.162.96.42', user: 'deploy', roles: %w{app db web}
 
 # ======================
