@@ -9,6 +9,7 @@ gem 'pg'
 gem 'sidekiq'
 gem 'sinatra'
 
+gem "jquery-rails"
 gem 'bootstrap-sass'
 gem 'nokogiri'
 gem 'pry'

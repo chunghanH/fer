@@ -12,6 +12,9 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require bootstrap/dropdown
+//= require bootstrap/alert
+//= require bootstrap-sprockets
 //= require_tree .
-//= bootstrap
+$('.dropdown-toggle').dropdown()  
 
