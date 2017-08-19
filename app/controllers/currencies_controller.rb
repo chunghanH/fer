@@ -2,11 +2,10 @@ class CurrenciesController < ApplicationController
 
   def create
   	@currency = Currency.create(currency_params)
-  	if @currency.save
-  	  redirect_to lists_path
-  	else
-  	  render '/lists'
-  	end 
+  	if !@currency.save
+      flash[:danger] = @currency.errors.messages
+    end
+  	redirect_to lists_path
   end
 
   def destroy

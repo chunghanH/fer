@@ -32,15 +32,17 @@
 </table>
 
 <h3>Current_types:<%=  @currencies.length %></h3>
-<ul>
+<ol>
 	<% @currencies.each do |currency| %>
-			<li><%= currency.name %>
-			<%= link_to 'delete', currency_path(currency), method: :delete %></li>
+			<li>
+				<%= currency.name %>
+			    <%= link_to 'delete', currency_path(currency), method: :delete, class: 'btn btn-danger btn-xs' %>
+		    </li>
 	<% end %>
-</ul>
+</ol>
 
 <%= form_for @currency do |f| %>
 	<%= f.label :name, 'Currency' %>
 	<%= f.text_field :name %>
-	<%= f.submit 'Add' %>
+	<%= f.submit 'Add', class:'btn btn-primary' %>
 <% end %>
