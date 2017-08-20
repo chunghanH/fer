@@ -1,5 +1,10 @@
 <div class="row">
 	<div class="col-sm-3">
+		<%= form_for @currency do |f| %>
+			<%= f.label :name, 'Currency' %>
+			<%= f.select :name, @selection %>
+			<%= f.submit 'Add', class:'btn btn-primary' %>
+		<% end %>
 		<h3>Current_Types:<%=  @currencies.length %></h3>
 		<table class="table table-hover" >
 			<% @currencies.each do |currency| %>
@@ -13,10 +18,5 @@
 				</tr>
 			<% end %>
 		</table>
-		<%= form_for @currency do |f| %>
-			<%= f.label :name, 'Currency' %>
-			<%= f.select :name, @selection %>
-			<%= f.submit 'Add', class:'btn btn-primary' %>
-		<% end %>
 	</div>
 </div>
