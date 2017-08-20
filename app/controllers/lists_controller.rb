@@ -1,8 +1,6 @@
 class ListsController < ApplicationController
 	def index
-	  # FerWorkerJob.set( wait: 1.minutes ).perform_later
 	  FerWorkerJob.perform_later
-	  #FerWorker.perform_async
 	  @currencies = Currency.all
 	  @currency = Currency.new
 	  @selection = {
@@ -18,13 +16,13 @@ class ListsController < ApplicationController
 	  	'SEK瑞典幣' => 'SEK',
 	  	'NZD紐元' => 'NZD',
 	  	'THB泰幣' => 'THB',
-	  	'PHP菲國比索' => 'PHP',
-	  	'IDR印尼幣' => 'IDR',
-	  	'KRW韓元' => 'KRW',
-	  	'VND越南盾' => 'VND',
-	  	'MYR馬來幣' => 'MYR',
 	  	'CNY人民幣' => 'CNY',
 	    'HKD港幣' => 'HKD',
+	  	# 'PHP菲國比索' => 'PHP',
+	  	# 'IDR印尼幣' => 'IDR',
+	  	# 'KRW韓元' => 'KRW',
+	  	# 'VND越南盾' => 'VND',
+	  	# 'MYR馬來幣' => 'MYR',
 	  }
 	end
 
