@@ -3,7 +3,7 @@
 		<%= form_for @currency do |f| %>
 			<%= f.label :name, 'Currency' %>
 			<%= f.select :name, @selection %>
-			<%= f.submit 'Add', class:'btn btn-primary' %>
+			<%= f.submit 'Add', class: 'btn btn-primary' %>
 		<% end %>
 		<h3>Current_Types:<%=  @currencies.length %></h3>
 		<table class="table table-hover" >
